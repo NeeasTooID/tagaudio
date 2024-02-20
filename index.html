@@ -1,13 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>LinucxMD Library</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pemutar Audio</title>
 </head>
 <body>
-    <audio id="myAudio" controls>
-        <source src="mp3/audio.mp3" type="audio/mpeg">
-      </audio>
-  </div>
+  <h1>Pemutar Audio</h1>
+  <audio id="myAudio" controls>
+    <source src="mp3/{{getParameterByName('file')}}" type="audio/mpeg">
+  </audio>
+
+  <script>
+    // Fungsi untuk mendapatkan nilai parameter dari URL
+    function getParameterByName(name, url = window.location.href) {
+      name = name.replace(/[\[\]]/g, '\\$&');
+      const regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+            results = regex.exec(url);
+      if (!results) return null;
+      if (!results[2]) return '';
+      return decodeURIComponent(results[2].replace(/\+/g, ' '));
+    }
+  </script>
 </body>
 </html>
